@@ -4,7 +4,7 @@ This is a simple Flask-based API for managing items with CRUD operations. The pr
 ---
 
 **Folder Structure**
-
+```
 mod10-pon1/
 │
 ├── api/
@@ -22,7 +22,7 @@ mod10-pon1/
 │
 ├── requirements.txt    # Python package dependencies
 └── README.md           # Project overview and setup instructions
-
+```
 **Getting Started:**
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
