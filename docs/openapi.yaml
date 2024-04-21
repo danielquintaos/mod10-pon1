@@ -1,0 +1,126 @@
+openapi: 3.0.0
+info:
+  title: My API
+  description: This is a simple API to demonstrate CRUD operations on items.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/api
+    description: Local server
+
+paths:
+  /items:
+    get:
+      summary: List all items
+      operationId: listItems
+      tags:
+        - Items
+      responses:
+        '200':
+          description: A list of items.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+        '404':
+          description: No items found.
+
+    post:
+      summary: Create a new item
+      operationId: createItem
+      tags:
+        - Items
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '201':
+          description: Item created successfully.
+        '400':
+          description: Invalid item supplied.
+
+  /items/{itemId}:
+    get:
+      summary: Get a single item by ID
+      operationId: getItemById
+      tags:
+        - Items
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Item details returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404':
+          description: Item not found.
+
+    put:
+      summary: Update an item by ID
+      operationId: updateItem
+      tags:
+        - Items
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '200':
+          description: Item updated.
+        '400':
+          description: Invalid item supplied.
+        '404':
+          description: Item not found.
+
+    delete:
+      summary: Delete an item by ID
+      operationId: deleteItem
+      tags:
+        - Items
+      parameters:
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Item deleted.
+        '404':
+          description: Item not found.
+
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The item ID.
+        name:
+          type: string
+          description: Name of the item.
+        description:
+          type: string
+          description: Description of the item.
+      required:
+        - name
+        - description

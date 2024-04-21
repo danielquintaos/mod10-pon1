@@ -1,0 +1,56 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2024-04-20T00:00:00.000Z",
+    "__export_source": "insomnia.desktop",
+    "resources": [
+      {
+        "_id": "wrk_123456",
+        "_type": "workspace",
+        "name": "My API",
+        "description": "Workspace for testing My API"
+      },
+      {
+        "_id": "req_123",
+        "_type": "request",
+        "_parentId": "wrk_123456",
+        "name": "List Items",
+        "method": "GET",
+        "url": "{{ base_url }}/items",
+        "body": {},
+        "parameters": [],
+        "headers": [],
+        "authentication": {}
+      },
+      {
+        "_id": "req_124",
+        "_type": "request",
+        "_parentId": "wrk_123456",
+        "name": "Create Item",
+        "method": "POST",
+        "url": "{{ base_url }}/items",
+        "body": {
+          "mimeType": "application/json",
+          "text": "{\"name\": \"example\", \"description\": \"An example item\"}"
+        },
+        "parameters": [],
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "authentication": {}
+      },
+      {
+        "_id": "env_123456",
+        "_type": "environment",
+        "data": {
+          "base_url": "http://localhost:5000/api"
+        },
+        "name": "Base Environment",
+        "parentId": "wrk_123456"
+      }
+    ]
+  }
+  
