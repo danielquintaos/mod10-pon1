@@ -1,12 +1,16 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, send_from_directory, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../static')
 
 # Mock database
 items = [
     {"id": "1", "name": "Item One", "description": "This is item one"},
     {"id": "2", "name": "Item Two", "description": "This is item two"}
 ]
+
+@app.route('/docs')
+def swagger_ui():
+    return render_template('swagger.html')
 
 @app.route('/api/items', methods=['GET'])
 def get_items():
